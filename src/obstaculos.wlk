@@ -7,7 +7,7 @@ class Obstaculo{
 
 object fuego{
 	var property position = game.at(8,1)
-	var property image = "fuego.jpg"
+	var property image = "fuego.png"
 	
 	method fuegoIntermitente(){
 		game.onTick(5000,"",{game.removeVisual(fuego)})

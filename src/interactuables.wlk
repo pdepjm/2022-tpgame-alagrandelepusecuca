@@ -2,7 +2,7 @@ import wollok.game.*
 import personaje.*
 
 object caja{
-	var position = game.origin().right(2).up(1)
+	var position = game.at(2,1)
 	var imagen = "cajaMadera.jpg"
 	method position() = position
 	method image() = imagen
@@ -17,7 +17,7 @@ object caja{
 	method tocarBoton(){
 		boton.interactuoCaja()
 		personaje.izquierda()
-		imagen = "cajaMovida.jpg"
+		imagen = "cajaMovida.png"
 		game.addVisual(escaleraAbajo)
 		self.moverIzquierda()		
 	}

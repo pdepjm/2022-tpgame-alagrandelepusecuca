@@ -13,10 +13,11 @@ object juego{
 	}
 	
 	method configurarJuego(){
-		game.title("GG")
+		game.title("Las aventuras de Sackboy")
 		game.addVisual(personaje)
 		game.width(25)
 		game.height(15)
+		game.boardGround("fondo.jpg")
 		
 	}
 	
@@ -26,13 +27,14 @@ object juego{
 	}
 	
 	method agregarObstaculos(){
-		game.width().times{col=>
-			self.nuevoObstaculo(game.at(col-1,2),"piedra.jpg")}
+		game.width().times{col=> 
+			if (col != 5)
+				self.nuevoObstaculo(game.at(col-1,2),"piedra.jpg")}
 		game.addVisual(caja)
 		game.addVisual(escaleraArriba)
 		game.addVisual(escaleraMedio)
 		game.addVisual(boton)
-		game.width().times{col=>
+		game.width().times{col=> 
 			self.nuevoObstaculo(game.at(col-1,0),"tierra.png")}
 		
 		game.addVisual(fuego)
@@ -46,8 +48,8 @@ object juego{
 		game.onCollideDo(caja,{chocado => caja.moverADerecha()})
 		game.onCollideDo(boton,{chocado => caja.tocarBoton()})
 		//game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera()})
-		game.onTick(5000,"chau",{game.removeVisual(fuego)})
-		game.onTick(10000,"hola",{game.addVisual(fuego)})
+		game.onTick(5000,"",{game.removeVisual(fuego)})
+		game.onTick(10000,"",{game.addVisual(fuego)})
 		game.onCollideDo(fuego,{chocado => chocado.muere()})
 	}
 }
