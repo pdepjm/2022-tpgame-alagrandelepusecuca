@@ -17,8 +17,7 @@ object juego{
 		game.addVisual(personaje)
 		game.width(25)
 		game.height(15)
-		game.boardGround("fondo.jpg")
-		
+		game.boardGround("fondo.jpg")	
 	}
 	
 	method configurarTeclas() {
@@ -31,25 +30,25 @@ object juego{
 			if (col != 5)
 				self.nuevoObstaculo(game.at(col-1,2),"piedra.jpg")}
 		game.addVisual(caja)
-		game.addVisual(escaleraArriba)
-		game.addVisual(escaleraMedio)
+		game.addVisual(escaleraDoble)
 		game.addVisual(boton)
 		game.width().times{col=> 
 			self.nuevoObstaculo(game.at(col-1,0),"tierra.png")}
-		
-		game.addVisual(fuego)
+		self.nuevoFuego(game.at(8,1))
+		game.addVisual(bandera)
 	}
 	method nuevoObstaculo(posicion,imagen){
 		const obstaculo = new Obstaculo(position = posicion,image = imagen)
 		game.addVisual(obstaculo)
 	}
+	method nuevoFuego(posicion){
+		const fuego = new Fuego(position = posicion,image = "fuego.png")
+		fuego.fuegoIntermitente()
+	}
 	
 	method interacciones(){
-		game.onCollideDo(caja,{chocado => caja.moverADerecha()})
-		game.onCollideDo(boton,{chocado => caja.tocarBoton()})
-		//game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera()})
-		game.onTick(5000,"",{game.removeVisual(fuego)})
-		game.onTick(10000,"",{game.addVisual(fuego)})
-		game.onCollideDo(fuego,{chocado => chocado.muere()})
+		game.onCollideDo(caja, {chocado => chocado.interactuarConCaja()})
+		game.onCollideDo(boton,{_ => caja.tocarBoton()})
+		game.onCollideDo(bandera,{chocado => bandera.ganaste()})
 	}
 }

@@ -2,15 +2,14 @@ import wollok.game.*
 import interactuables.*
 
 object personaje {
-	var position = game.origin().up(1)
+	var position = game.at(0,1)
 	var anterior 
 	
 	method image() = "Jerry.png"
 	
-	method moverCaja(){
-		game.onCollideDo(caja,{chocado => caja.moverADerecha()})
-	}
-	
+	method interactuarConCaja(){
+		caja.moverDerecha()
+	}	
 	method position() = position 
 	method rebotar(){
 		position = anterior
@@ -35,7 +34,12 @@ object personaje {
 	}
 	
 	method muere(){
-		game.say(self, "RIP \n Fin del juego.\n \n \n \n")
+		game.clear()
+		game.addVisual(fin)
 	}	
 }
 
+object fin{
+	var property position = game.origin()
+	var property image = "fin.png"
+}

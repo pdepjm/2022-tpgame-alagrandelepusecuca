@@ -1,16 +1,24 @@
 import wollok.game.*
+import personaje.*
 
 class Obstaculo{
 	var property position
 	var property image
 }
 
-object fuego{
-	var property position = game.at(8,1)
-	var property image = "fuego.png"
-	
+class Fuego inherits Obstaculo{
 	method fuegoIntermitente(){
-		game.onTick(5000,"",{game.removeVisual(fuego)})
-		game.onTick(10000,"",{game.addVisual(fuego)})
+		game.addVisual(self)
+		game.onCollideDo(self,{chocado => chocado.muere()})
+		game.onTick(2500,"Aparece",{self.titila()})
+	}
+	
+	method titila(){
+		if(game.hasVisual(self))
+			game.removeVisual(self)
+		else{
+			game.addVisual(self)
+			game.onCollideDo(self,{chocado => chocado.muere()})
+		}
 	}
 }
