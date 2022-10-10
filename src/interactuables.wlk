@@ -27,10 +27,6 @@ object caja{
 		self.image("cajaMovida.png")
 		boton.image("botonApretado.png")
 		personaje.rebotar()
-		//game.removeVisual(self)
-		//game.addVisual(cajaInamovible)
-		//game.onCollideDo(cajaInamovible,{chocado => chocado.rebotar()})
-		//cajaInamovible.rebotarContra()
 		if (!game.hasVisual(escaleraAbajo)){
 			game.addVisual(escaleraAbajo)
 			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera()})
@@ -42,6 +38,7 @@ object caja{
 object boton{
 	var property position = game.at(24,1)
 	var property image = "boton.png"
+	
 	/*
 	method interactuarConCaja(){
 		game.say(personaje,"hola")
