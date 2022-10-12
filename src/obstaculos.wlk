@@ -1,12 +1,8 @@
 import wollok.game.*
 import personaje.*
+import interactuables.*
 
-class Obstaculo{
-	var property position
-	var property image
-}
-
-class Fuego inherits Obstaculo{
+class Fuego inherits Objeto{
 	method fuegoIntermitente(){
 		game.addVisual(self)
 		game.onCollideDo(self,{chocado => chocado.muere()})
@@ -18,7 +14,7 @@ class Fuego inherits Obstaculo{
 			game.removeVisual(self)
 		else{
 			game.addVisual(self)
-			game.onCollideDo(self,{chocado => chocado.muere()})
+			//game.onCollideDo(self,{chocado => chocado.muere()})
 		}
 	}
 }

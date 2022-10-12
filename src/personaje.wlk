@@ -2,24 +2,25 @@ import wollok.game.*
 import interactuables.*
 
 object personaje {
-	var position = game.at(0,1)
-	var anterior 
-	
-	method image() = "Jerry.png"
+	var property position = game.at(0,1)
+	var anterior
+	var property image = "jerryDer.png"
 	
 	method interactuarConCaja(){
 		caja.moverDerecha()
 	}	
-	method position() = position 
+ 
 	method rebotar(){
 		position = anterior
 	}
 	
 	method izquierda() {
+		self.image("jerryIzq.png")
 		anterior = position
 		position = position.left(1)
 	}
 	method derecha() {
+		self.image("jerryDer.png")
 		anterior = position
 		position = position.right(1)
 	}
@@ -35,11 +36,10 @@ object personaje {
 	
 	method muere(){
 		game.clear()
-		game.addVisual(fin)
+		game.schedule(350,{game.addVisual(fin)})
 	}	
+	
 }
 
-object fin{
-	var property position = game.origin()
-	var property image = "fin.png"
+object fin inherits Objeto(position = game.origin(), image = "fin.png"){
 }

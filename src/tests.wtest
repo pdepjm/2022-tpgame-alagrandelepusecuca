@@ -1,6 +1,30 @@
+import wollok.game.*
+import juego.*
+import personaje.*
+import interactuables.*
+import obstaculos.*
 
-test "testX" {
-
-	assert.that(true)
-
+describe "Todos los tests"{
+	method initialize(){
+		game.clear()
+	
+	}
+	
+	test "Al tocar el fuego, el personaje muere" {
+		juego.nuevoFuego(game.at(8,1))
+		personaje.position(game.at(8,1))
+		assert.notThat(game.hasVisual(personaje))
+	}
+	test "Cuando la caja toca el boton, aparece la escalera"{
+		game.addVisual(personaje)
+		caja.tocarBoton()
+		assert.that(game.hasVisual(escaleraAbajo))
+	}
+	test "Cuando el personaje toca la bandera, termina el juego"{
+		game.addVisual(bandera)
+		personaje.position(bandera.position())
+		if (personaje.position() == bandera.position())
+			bandera.ganaste()
+		assert.that(game.hasVisual(ganaste))
+	}
 }

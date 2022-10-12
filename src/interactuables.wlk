@@ -1,11 +1,14 @@
 import wollok.game.*
 import personaje.*
+import obstaculos.*
 
-object caja{
-	var property position = game.at(2,1)
-	var property image = "cajaMadera.jpg"
+class Objeto{
+	var property position
+	var property image
+}
 
-	method moverDerecha() {
+object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
+	method moverDerecha(){
 		position = position.right(1)
 	}
 	
@@ -29,16 +32,15 @@ object caja{
 		personaje.rebotar()
 		if (!game.hasVisual(escaleraAbajo)){
 			game.addVisual(escaleraAbajo)
+			game.removeVisual(personaje)
+			game.addVisual(personaje)
 			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera()})
 		}	
 		
 	}
 }
 
-object boton{
-	var property position = game.at(24,1)
-	var property image = "boton.png"
-	
+object boton inherits Objeto(position =game.at(24,1),image = "boton.png"){	
 	/*
 	method interactuarConCaja(){
 		game.say(personaje,"hola")
@@ -54,26 +56,16 @@ object boton{
 	*/
 }
 
-object bandera{
-	var property position = game.at(20,3)	
-	var property image = "banderaFin.png"
-	
+object bandera inherits Objeto(position = game.at(20,3),image = "banderaFin.png"){	
 	method ganaste(){
+		game.clear()
 		game.addVisual(ganaste)
 	}
 }
 
-object ganaste{
-	var property position = game.origin()
-	var property image = "ganaste.png"
+object ganaste inherits Objeto(position = game.origin(),image = "ganaste.png"){
 }
 
-object escaleraAbajo{
-	var property position = game.at(4,1)	
-	var property image = "escalera.png"
+object escaleraAbajo inherits Objeto(position = game.at(4,1),image = "escalera.png"){
 }
 
-object escaleraDoble{
-	var property position = game.at(4,2)
-	var property image = "escaleraDoble.png"
-}
