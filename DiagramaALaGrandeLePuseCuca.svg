@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="264px" preserveAspectRatio="none" style="width:897px;height:264px;background:#FFFFFF;" version="1.1" viewBox="0 0 897 264" width="897px" zoomAndPan="magnify"><defs/><g><!--MD5=[3051a6a8f877a755a60c7cfd1e6f410a]
+class Objeto--><g id="elem_Objeto"><rect codeLine="1" fill="#F1F1F1" height="80.5938" id="Objeto" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="78" x="443" y="162.5"/><ellipse cx="458" cy="178.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M460.9688,184.1406 Q460.3906,184.4375 459.75,184.5781 Q459.1094,184.7344 458.4063,184.7344 Q455.9063,184.7344 454.5781,183.0938 Q453.2656,181.4375 453.2656,178.3125 Q453.2656,175.1875 454.5781,173.5313 Q455.9063,171.875 458.4063,171.875 Q459.1094,171.875 459.75,172.0313 Q460.4063,172.1875 460.9688,172.4844 L460.9688,175.2031 Q460.3438,174.625 459.75,174.3594 Q459.1563,174.0781 458.5313,174.0781 Q457.1875,174.0781 456.5,175.1563 Q455.8125,176.2188 455.8125,178.3125 Q455.8125,180.4063 456.5,181.4844 Q457.1875,182.5469 458.5313,182.5469 Q459.1563,182.5469 459.75,182.2813 Q460.3438,182 460.9688,181.4219 L460.9688,184.1406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="472" y="183.3467">Objeto</text><line style="stroke:#181818;stroke-width:0.5;" x1="444" x2="520" y1="194.5" y2="194.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="449" y="211.4951">position</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="449" y="227.792">image</text><line style="stroke:#181818;stroke-width:0.5;" x1="444" x2="520" y1="235.0938" y2="235.0938"/></g><!--MD5=[32747c1d1c8b91510c81fb4490643105]
+class Fuego--><g id="elem_Fuego"><rect codeLine="6" fill="#F1F1F1" height="80.5938" id="Fuego" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="7" y="7"/><ellipse cx="53.75" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M56.7188,28.6406 Q56.1406,28.9375 55.5,29.0781 Q54.8594,29.2344 54.1563,29.2344 Q51.6563,29.2344 50.3281,27.5938 Q49.0156,25.9375 49.0156,22.8125 Q49.0156,19.6875 50.3281,18.0313 Q51.6563,16.375 54.1563,16.375 Q54.8594,16.375 55.5,16.5313 Q56.1563,16.6875 56.7188,16.9844 L56.7188,19.7031 Q56.0938,19.125 55.5,18.8594 Q54.9063,18.5781 54.2813,18.5781 Q52.9375,18.5781 52.25,19.6563 Q51.5625,20.7188 51.5625,22.8125 Q51.5625,24.9063 52.25,25.9844 Q52.9375,27.0469 54.2813,27.0469 Q54.9063,27.0469 55.5,26.7813 Q56.0938,26.5 56.7188,25.9219 L56.7188,28.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="74.25" y="27.8467">Fuego</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="152" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="152" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="13" y="63.9951">fuegoIntermitente()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="13" y="80.292">titila()</text></g><g id="elem_escaleraAbajo"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="110" x="188" y="29.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="195" y="44.4951">escaleraAbajo</text><line style="stroke:#181818;stroke-width:0.5;" x1="189" x2="297" y1="49.7969" y2="49.7969"/></g><g id="elem_fin"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="30" x="333" y="29.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="16" x="340" y="44.4951">fin</text><line style="stroke:#181818;stroke-width:0.5;" x1="334" x2="362" y1="49.7969" y2="49.7969"/></g><g id="elem_ganaste"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="70" x="398" y="29.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="405" y="44.4951">ganaste</text><line style="stroke:#181818;stroke-width:0.5;" x1="399" x2="467" y1="49.7969" y2="49.7969"/></g><g id="elem_boton"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="55" x="503.5" y="29.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="510.5" y="44.4951">boton</text><line style="stroke:#181818;stroke-width:0.5;" x1="504.5" x2="557.5" y1="49.7969" y2="49.7969"/></g><g id="elem_bandera"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="78" x="594" y="25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="604.5" y="39.9951">bandera</text><line style="stroke:#181818;stroke-width:0.5;" x1="595" x2="671" y1="45.2969" y2="45.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="600" y="62.292">ganaste()</text></g><g id="elem_caja"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="41" x="707.5" y="29.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="714.5" y="44.4951">caja</text><line style="stroke:#181818;stroke-width:0.5;" x1="708.5" x2="747.5" y1="49.7969" y2="49.7969"/></g><g id="elem_personaje"><rect fill="#F1F1F1" height="109.7813" style="stroke:#181818;stroke-width:0.5;" width="153" x="737.5" y="148"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="779.5" y="162.9951">personaje</text><line style="stroke:#181818;stroke-width:0.5;" x1="738.5" x2="889.5" y1="168.2969" y2="168.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="743.5" y="185.292">position</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="743.5" y="201.5889">image</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="743.5" y="217.8857">interactuarConCaja()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="743.5" y="234.1826">subirEscalera()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="743.5" y="250.4795">muere()</text></g><g id="elem_juego"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="61" x="783.5" y="25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="794.5" y="39.9951">juego</text><line style="stroke:#181818;stroke-width:0.5;" x1="784.5" x2="843.5" y1="45.2969" y2="45.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="789.5" y="62.292">iniciar()</text></g><!--MD5=[dcc9ecd6d28cd948c15d956e1313439f]
+link Fuego to Objeto--><g id="link_Fuego_Objeto"><path codeLine="32" d="M153.02,81.01 C158.75,83.42 164.46,85.77 170,88 C257.64,123.2 360.84,160.02 423.82,181.98 " fill="none" id="Fuego-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="426.19,175.39,442.79,188.57,421.6,188.62,426.19,175.39" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8e9b56ce6bbebe747aff05197ac238f5]
+link escaleraAbajo to Objeto--><g id="link_escaleraAbajo_Objeto"><path codeLine="33" d="M269.49,65.51 C307.02,89.62 376.6,134.3 425.9,165.97 " fill="none" id="escaleraAbajo-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="429.69,160.08,442.73,176.78,422.12,171.86,429.69,160.08" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[87057aa5402ed4765de185bf3dc7aaf1]
+link fin to Objeto--><g id="link_fin_Objeto"><path codeLine="34" d="M361.52,65.56 C367.16,72.58 373.82,80.74 380,88 C396.68,107.59 415.34,128.68 432.1,147.32 " fill="none" id="fin-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="437.44,142.79,445.64,162.33,427.04,152.17,437.44,142.79" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[09d602bbc104903ca0855b61c915a086]
+link ganaste to Objeto--><g id="link_ganaste_Objeto"><path codeLine="35" d="M438.43,65.51 C444.39,84.17 454.27,115.15 463.13,142.88 " fill="none" id="ganaste-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="469.91,141.09,469.32,162.27,456.57,145.35,469.91,141.09" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3d1090ab6ff510a541f613c642f98e2d]
+link boton to Objeto--><g id="link_boton_Objeto"><path codeLine="36" d="M525.57,65.51 C519.61,84.17 509.73,115.15 500.87,142.88 " fill="none" id="boton-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="507.43,145.35,494.68,162.27,494.09,141.09,507.43,145.35" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b19067ea62d72483cd75db320ffc7774]
+link bandera to Objeto--><g id="link_bandera_Objeto"><path codeLine="37" d="M611.69,70.17 C591.86,90.32 561.51,121.18 535.14,147.98 " fill="none" id="bandera-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="540.02,153,521,162.35,530.04,143.18,540.02,153" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6b66d2c3c988507054d602aec971873c]
+link caja to Objeto--><g id="link_caja_Objeto"><path codeLine="38" d="M713.49,65.79 C706.8,73.15 698.46,81.52 690,88 C642.96,123.99 583.11,155.53 539.7,176.25 " fill="none" id="caja-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="542.39,182.72,521.31,184.86,536.46,170.04,542.39,182.72" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[19c3b9c3ce57dc017f4135027dd81efc]
+link juego to Objeto--><g id="link_juego_Objeto"><path codeLine="40" d="M790.66,70.13 C783.14,76.41 774.54,82.94 766,88 C686.59,135.08 584.14,170.77 526.51,188.84 " fill="none" id="juego-to-Objeto" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="521.42,190.43,531.2053,191.5468,526.1899,188.9305,528.8061,183.915,521.42,190.43" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="529.0651" y="183.9699">*</text></g><!--MD5=[73cf4eedecb1c8b5968a3068ed8305f9]
+link juego to personaje--><g id="link_juego_personaje"><path codeLine="41" d="M814,70.17 C814,88.99 814,117.17 814,142.64 " fill="none" id="juego-to-personaje" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="814,147.7,818,138.7,814,142.7,810,138.7,814,147.7" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="806.5516" y="136.7432">*</text></g><!--MD5=[b321d5de79af89c9a3d23c7f16e911f1]
+@startuml
+class Objeto{
+  position
+  image
+}
+
+class Fuego{
+  fuegoIntermitente()
+  titila()
+}
+
+object escaleraAbajo
+object fin
+object ganaste
+object boton
+object bandera{
+  ganaste()
+}
+object caja{
+  
+}
+object personaje{
+  position
+  image
+  interactuarConCaja()
+  subirEscalera()
+  muere()
+}
+object juego{
+  iniciar()
+}
+
+Fuego - -|> Objeto
+escaleraAbajo - -|> Objeto
+fin - -|> Objeto
+ganaste - -|> Objeto
+boton - -|> Objeto
+bandera - -|> Objeto
+caja - -|> Objeto
+
+juego - ->"*" Objeto
+juego - ->"*" personaje
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
