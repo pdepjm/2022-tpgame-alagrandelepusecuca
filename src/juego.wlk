@@ -2,14 +2,15 @@ import wollok.game.*
 import personaje.*
 import obstaculos.*
 import interactuables.*
+import extras.*
 
 object juego{
 	method iniciar(){
 		self.configurarJuego()
 		self.agregarObstaculos()
 		self.agregarObjetos()
-		self.configurarTeclas()
 		self.interacciones()
+		self.configurarPersonaje()
 		game.start()
 	}
 	
@@ -21,25 +22,24 @@ object juego{
 		game.boardGround("fondo.jpg")	
 	}
 	
-	method configurarTeclas() {
+	method configurarPersonaje(){
 		keyboard.left().onPressDo({personaje.izquierda()})
 		keyboard.right().onPressDo({personaje.derecha()})
+		game.addVisual(corazon1)
+		game.addVisual(corazon2)
+		game.addVisual(corazon3)
 	}
 	
 	method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 5)
 				self.nuevoObstaculo(game.at(col-1,2),"piedra.jpg")}
+		
 		game.width().times{col=> 
 			self.nuevoObstaculo(game.at(col-1,0),"tierra.png")}
-		self.nuevoFuego(game.at(8,1))
-	}
-	
-	method agregarObjetos(){
-		self.nuevoObstaculo(game.at(4,2),"escaleraDoble.png")
-		game.addVisual(bandera)
-		game.addVisual(caja)
-		game.addVisual(boton)
+		self.nuevoFuego(game.at(8,3))
+		game.schedule(350,{self.nuevoFuego(game.at(12,3))})
+		
 	}
 	method nuevoObstaculo(posicion,imagen){
 		const obstaculo = new Objeto(position = posicion,image = imagen)
@@ -49,10 +49,18 @@ object juego{
 		const fuego = new Fuego(position = posicion,image = "fuego.png")
 		fuego.fuegoIntermitente()
 	}
-	
+	method agregarObjetos(){
+		game.addVisual(caja)
+		game.addVisual(boton)
+		game.addVisual(bandera)
+		game.addVisual(kit)
+		self.nuevoObstaculo(game.at(4,2),"escaleraDoble.png")
+		
+	}
 	method interacciones(){
 		game.onCollideDo(caja, {chocado => chocado.interactuarConCaja()})
 		game.onCollideDo(boton,{_ => caja.tocarBoton()})
-		game.onCollideDo(bandera,{chocado => bandera.ganaste()})
+		game.onCollideDo(bandera,{chocado => bandera.ganador()})
+		game.onCollideDo(kit,{chocado => chocado.usarKit()})
 	}
 }

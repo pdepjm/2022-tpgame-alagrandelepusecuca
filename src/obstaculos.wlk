@@ -2,6 +2,8 @@ import wollok.game.*
 import personaje.*
 import interactuables.*
 
+class Bloque inherits Objeto{}
+
 class Fuego inherits Objeto{
 	method fuegoIntermitente(){
 		game.addVisual(self)
@@ -10,11 +12,13 @@ class Fuego inherits Objeto{
 	}
 	
 	method titila(){
-		if(game.hasVisual(self))
+		if(game.hasVisual(self)){
+			game.onCollideDo(self,{chocado => chocado.sumarVida()})
 			game.removeVisual(self)
+		}
 		else{
 			game.addVisual(self)
-			//game.onCollideDo(self,{chocado => chocado.muere()})
+			game.onCollideDo(self,{chocado => chocado.muere()})
 		}
 	}
 }

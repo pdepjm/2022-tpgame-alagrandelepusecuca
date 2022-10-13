@@ -1,6 +1,8 @@
 import wollok.game.*
 import personaje.*
 import obstaculos.*
+import extras.*
+
 
 class Objeto{
 	var property position
@@ -40,32 +42,16 @@ object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
 	}
 }
 
-object boton inherits Objeto(position =game.at(24,1),image = "boton.png"){	
-	/*
-	method interactuarConCaja(){
-		game.say(personaje,"hola")
-		self.image("botonApretado.png")
-		caja.image("cajaMovida.png")
-		caja.moverIzquierda()
-		personaje.izquierda()
-		if (!game.hasVisual(escaleraAbajo)){
-			game.addVisual(escaleraAbajo)
-			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera()})
-		}	
-	}
-	*/
-}
-
 object bandera inherits Objeto(position = game.at(20,3),image = "banderaFin.png"){	
-	method ganaste(){
+	method ganador(){
 		game.clear()
 		game.addVisual(ganaste)
 	}
 }
 
-object ganaste inherits Objeto(position = game.origin(),image = "ganaste.png"){
-}
+const boton = new Objeto(position =game.at(24,1),image = "boton.png")
 
-object escaleraAbajo inherits Objeto(position = game.at(4,1),image = "escalera.png"){
-}
+const kit = new Objeto(position = game.at(18,3), image = "kit.png")
+
+const escaleraAbajo = new Objeto(position = game.at(4,1),image = "escalera.png")
 

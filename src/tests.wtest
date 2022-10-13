@@ -3,6 +3,7 @@ import juego.*
 import personaje.*
 import interactuables.*
 import obstaculos.*
+import extras.*
 
 describe "Todos los tests"{
 	method initialize(){
@@ -24,7 +25,7 @@ describe "Todos los tests"{
 		game.addVisual(bandera)
 		personaje.position(bandera.position())
 		if (personaje.position() == bandera.position())
-			bandera.ganaste()
+			bandera.ganador()
 		assert.that(game.hasVisual(ganaste))
 	}
 }
