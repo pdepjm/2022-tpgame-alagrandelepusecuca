@@ -7,6 +7,16 @@ import extras.*
 class Objeto{
 	var property position
 	var property image
+	
+	method guardar(){}
+	method usar(){}
+}
+
+class ObjetoUsable inherits Objeto{
+	override method guardar(){
+		game.removeVisual(self)
+		personaje.primerSlotLibre().llenarSlot(self)
+	}
 }
 
 object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
@@ -51,7 +61,51 @@ object bandera inherits Objeto(position = game.at(20,3),image = "banderaFin.png"
 
 const boton = new Objeto(position =game.at(24,1),image = "boton.png")
 
-const kit = new Objeto(position = game.at(18,3), image = "kit.png")
 
 const escaleraAbajo = new Objeto(position = game.at(4,1),image = "escalera.png")
+
+
+// Objetos que pueden ir al inventario:
+object kit inherits ObjetoUsable(position = game.at(18,3), image = "kit.png"){
+	
+	method imagenIzq() = "jerryKitIzq.png"
+	method imagenDer() = "jerryKitDer.png"
+		
+	method equipar(){
+		personaje.image(self.imagenDer())
+	}
+	
+	override method guardar(){
+		game.removeVisual(self)
+		personaje.primerSlotLibre().llenarSlot(self)
+	}
+	
+	override method usar(){
+		if (personaje.objetoEnMano() == self){
+			if(personaje.vidasRestantes() < 3)
+				personaje.sumarVida()
+			game.removeVisual(self)
+		}
+		personaje.equiparVacio()
+	}
+}
+
+object espada inherits ObjetoUsable(position = game.at(15,3), image = "espada.png"){
+	method imagenDer() = "morty.png"
+	method imagenIzq() = "jerryKitIzq.png"
+	
+	method equipar(){
+		personaje.image(self.imagenDer())
+	}
+	
+	override method usar(){
+		if (personaje.objetoEnMano() == self){
+			game.say(personaje,"te mato")
+			game.removeVisual(self)
+		}
+		personaje.equiparVacio()
+	}
+}
+
+
 

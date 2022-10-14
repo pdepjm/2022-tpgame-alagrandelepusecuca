@@ -4,43 +4,75 @@ import extras.*
 
 const corazon1 = new Corazon(position = game.at(0,14))
 const corazon2 = new Corazon(position = game.at(1,14))
-const corazon3 = new Corazon(position = game.at(2,14))
+const corazon3 = new Corazon(position = game.at(2,14),image = "corazonVacio.png")
+
+const pos1 = new Slot(position = game.at(7,14))
+const pos2 = new Slot(position = game.at(8,14))
+const pos3 = new Slot(position = game.at(9,14))
+const pos4 = new Slot(position = game.at(10,14))
+const pos5 = new Slot(position = game.at(11,14))
 
 object personaje {
-	var property position = game.at(0,3)
-	var anterior
+	var property posicionReaparicion = game.at(13,3)
+	var property position = posicionReaparicion
+	var property anterior
 	var property image = "jerryDer.png"
 	
 	const corazones = [corazon3,corazon2,corazon1]
+
+	const inventario = [pos1,pos2,pos3,pos4,pos5]
+	var property objetoEnMano = vacio
 	
+		
 	// Interacciones	
 	method interactuarConCaja(){
 		caja.moverDerecha()
-	}	
+	} 	
  	
+ 	// Inventario
+ 	method objetoEnPos(n) = inventario.get(n).objetoGuardado()
+ 	
+ 	method equiparVacio(){
+ 		personaje.objetoEnMano(vacio)
+		personaje.image(vacio.imagenDer())
+ 	}
+ 	
+ 	method equiparObjeto(pos){
+ 		if (!inventario.get(pos).vacio()){
+	 		objetoEnMano = self.objetoEnPos(pos)
+	 		objetoEnMano.equipar()
+	 		inventario.get(pos).vaciarSlot()
+	 	}
+	 	else
+	 		game.say(personaje,"Espacio del inventario vacio.")
+ 	}
+ 	
+ 	method primerSlotLibre() = inventario.find({marco => marco.vacio()})
  	
  	// Movimiento:
 	method rebotar(){
 		position = anterior
 	}
-	
 	method izquierda() {
-		self.image("jerryIzq.png")
+		image = objetoEnMano.imagenIzq()
 		anterior = position
 		position = position.left(1)
 	}
-	
 	method derecha() {
-		self.image("jerryDer.png")
+		image = objetoEnMano.imagenDer()
 		anterior = position
 		position = position.right(1)
-	}
-	
-	method arriba() {
-		anterior = position
-		position = position.up(1)
 	}	
-	
+	method arriba() {
+		if (!game.hasVisual(position)){
+			anterior = position
+			position = position.up(1)
+		}
+	}	
+	method abajo(){
+		anterior = position
+		position = position.down(1)
+	}
 	method subirEscalera(){
 		self.arriba()
 		self.arriba()
@@ -49,19 +81,15 @@ object personaje {
 	
 	// Vidas:
 	method muere(){
-		if(self.vidasRestantes() <= 1){
+		if(self.vidasRestantes() == 1){
 			game.clear()
 			game.schedule(350,{game.addVisual(fin)})
 		}
 		else
 			self.restarVida()
+		position = posicionReaparicion
+		image = "jerryDer.png"
 	}	
-	
-	method usarKit(){
-		if(self.vidasRestantes() < 3)
-			self.sumarVida()
-		game.removeVisual(kit)
-	}
 	
 	method sumarVida(){
 		self.ultimoCoraVacio().llenarCorazon()
@@ -82,6 +110,23 @@ object personaje {
 		corazones.find({cora => cora.image() == "corazonLLeno.png"})
 }
 
+class Slot{
+	var property position
+	var property image = "marcoInventario.png"
+	var property objetoGuardado = null
+	
+	method vacio() = objetoGuardado == null
+	
+	method llenarSlot(objeto){
+		game.addVisual(objeto)
+		objeto.position(self.position())
+		objetoGuardado = objeto
+	}
+	method vaciarSlot(){
+		image = "marcoInventario.png"
+		objetoGuardado = null
+	}
+}
 
 class Corazon{
 	var property position
@@ -98,3 +143,12 @@ class Corazon{
 	}
 }
 
+object vacio{
+	method imagenIzq() = "jerryIzq.png"
+	method imagenDer() = "jerryDer.png"
+	
+	method equipar(){}
+	method usar(){
+		game.say(personaje,"No tengo \n nada equipado.")
+	}
+}
