@@ -18,35 +18,34 @@ object personaje {
 	var property anterior
 	var property image = "jerryDer.png"
 	
+	var property direccion = derecha
+	
 	const corazones = [corazon3,corazon2,corazon1]
 
-	const inventario = [pos1,pos2,pos3,pos4,pos5]
+	const property inventario = [pos1,pos2,pos3,pos4,pos5]
 	var property objetoEnMano = vacio
-	
-		
-	// Interacciones	
-	method interactuarConCaja(){
-		caja.moverDerecha()
-	} 	
- 	
+	 	
  	// Inventario
  	method objetoEnPos(n) = inventario.get(n).objetoGuardado()
  	
  	method equiparVacio(){
- 		personaje.objetoEnMano(vacio)
-		personaje.image(vacio.imagenDer())
+ 		self.objetoEnMano(vacio)
+		self.image(vacio.imagenDer())
  	}
+
  	
  	method equiparObjeto(pos){
- 		if (!inventario.get(pos).vacio()){
-	 		objetoEnMano = self.objetoEnPos(pos)
-	 		objetoEnMano.equipar()
-	 		inventario.get(pos).vaciarSlot()
-	 	}
-	 	else
-	 		game.say(personaje,"Espacio del inventario vacio.")
+	 	if (objetoEnMano == self.objetoEnPos(pos)){
+	 		objetoEnMano = vacio
+	 		objetoEnMano.equipar(direccion)
+	 	}else{
+	 		if (!inventario.get(pos).vacio() and objetoEnMano != self.objetoEnPos(pos)){
+		 		objetoEnMano = self.objetoEnPos(pos)
+		 		objetoEnMano.equipar(direccion)
+		 		objetoEnMano.posicion(pos)
+	 		}
+ 		}
  	}
- 	
  	method primerSlotLibre() = inventario.find({marco => marco.vacio()})
  	
  	// Movimiento:
@@ -54,12 +53,14 @@ object personaje {
 		position = anterior
 	}
 	method izquierda() {
-		image = objetoEnMano.imagenIzq()
+		direccion = izquierda
+		objetoEnMano.equipar(direccion)
 		anterior = position
 		position = position.left(1)
 	}
 	method derecha() {
-		image = objetoEnMano.imagenDer()
+		direccion = derecha
+		objetoEnMano.equipar(direccion)
 		anterior = position
 		position = position.right(1)
 	}	
@@ -89,6 +90,7 @@ object personaje {
 			self.restarVida()
 		position = posicionReaparicion
 		image = "jerryDer.png"
+		objetoEnMano = vacio
 	}	
 	
 	method sumarVida(){
@@ -108,6 +110,14 @@ object personaje {
 
 	method primerCoraLLeno() = 
 		corazones.find({cora => cora.image() == "corazonLLeno.png"})
+}
+
+object derecha{
+	method imagen(objeto) = objeto.imagenDer()
+}
+
+object izquierda{
+	method imagen(objeto) = objeto.imagenIzq()
 }
 
 class Slot{
@@ -147,7 +157,10 @@ object vacio{
 	method imagenIzq() = "jerryIzq.png"
 	method imagenDer() = "jerryDer.png"
 	
-	method equipar(){}
+	method equipar(direccion){
+		personaje.image(direccion.imagen(self))
+	}
+	
 	method usar(){
 		game.say(personaje,"No tengo \n nada equipado.")
 	}

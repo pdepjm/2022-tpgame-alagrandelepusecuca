@@ -3,12 +3,14 @@ import personaje.*
 import obstaculos.*
 import interactuables.*
 import extras.*
+import enemigos.*
 
 object juego{
 	method iniciar(){
 		self.configurarJuego()
 		self.agregarObstaculos()
 		self.agregarObjetos()
+		self.agregarEnemigos()
 		self.configurarPersonaje()
 		self.interacciones()
 		self.extras()
@@ -35,6 +37,9 @@ object juego{
 		keyboard.space().onPressDo({personaje.objetoEnMano().usar()})
 		keyboard.q().onPressDo({personaje.equiparObjeto(0)})
 		keyboard.w().onPressDo({personaje.equiparObjeto(1)})
+		keyboard.e().onPressDo({personaje.equiparObjeto(2)})
+		keyboard.r().onPressDo({personaje.equiparObjeto(3)})
+		keyboard.t().onPressDo({personaje.equiparObjeto(4)})
 		
 		// Vidas:
 		game.addVisual(corazon1)
@@ -85,6 +90,10 @@ object juego{
 		
 	}
 	
+	method agregarEnemigos(){
+		game.addVisual(caballero)
+	}
+	
 	method extras(){
 		game.addVisual(pos1)
 		game.addVisual(pos2)
@@ -94,9 +103,10 @@ object juego{
 	}
 	
 	method interacciones(){
-		game.onCollideDo(caja, {chocado => chocado.interactuarConCaja()})
 		game.onCollideDo(boton,{chocado => chocado.tocarBoton()})
 		game.onCollideDo(bandera,{chocado => bandera.ganador()})
-		game.onCollideDo(personaje,{chocado => chocado.guardar()})
+		
+		// Interactua con objetos y con la caja
+		game.onCollideDo(personaje,{chocado => chocado.interactuar()})
 	}
 }
