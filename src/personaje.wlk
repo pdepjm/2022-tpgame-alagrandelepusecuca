@@ -24,6 +24,11 @@ object personaje {
 
 	const property inventario = [pos1,pos2,pos3,pos4,pos5]
 	var property objetoEnMano = vacio
+	
+	method tocarBoton(){
+		game.say(self, "Usar Caja")
+	}
+	
 	 	
  	// Inventario
  	method objetoEnPos(n) = inventario.get(n).objetoGuardado()

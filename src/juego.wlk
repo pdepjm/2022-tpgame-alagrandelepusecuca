@@ -5,7 +5,10 @@ import interactuables.*
 import extras.*
 import enemigos.*
 
-object juego{
+
+class Nivel {
+	method proximoNivel () = null
+	
 	method iniciar(){
 		self.configurarJuego()
 		self.agregarObstaculos()
@@ -15,13 +18,6 @@ object juego{
 		self.interacciones()
 		self.extras()
 		game.start()
-	}
-	
-	method configurarJuego(){
-		game.title("Las aventuras de Jerry")
-		game.width(25)
-		game.height(15)
-		game.boardGround("fondo.jpg")	
 	}
 	
 	method configurarPersonaje(){
@@ -47,7 +43,26 @@ object juego{
 		game.addVisual(corazon3)
 	}
 	
-	method agregarObstaculos(){
+	method configurarJuego()
+	method agregarObstaculos()
+	method agregarObjetos()
+	method agregarEnemigos()
+	method interacciones()
+	method extras()
+	
+}
+
+
+object nivel0 inherits Nivel {
+	
+	override method configurarJuego(){
+		game.title("Las aventuras de Jerry")
+		game.width(25)
+		game.height(15)
+		game.boardGround("fondo.jpg")	
+	}
+	
+	override method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 5)
 				self.nuevoBloque(game.at(col-1,2),"piedra.jpg")}
@@ -80,7 +95,7 @@ object juego{
 		game.addVisual(marco)
 	}
 	
-	method agregarObjetos(){
+	override method agregarObjetos(){
 		game.addVisual(caja)
 		game.addVisual(boton)
 		game.addVisual(bandera)
@@ -90,11 +105,11 @@ object juego{
 		
 	}
 	
-	method agregarEnemigos(){
+	override method agregarEnemigos(){
 		game.addVisual(caballero)
 	}
 	
-	method extras(){
+	override method extras(){
 		game.addVisual(pos1)
 		game.addVisual(pos2)
 		game.addVisual(pos3)
@@ -102,11 +117,30 @@ object juego{
 		game.addVisual(pos5)
 	}
 	
-	method interacciones(){
+	override method interacciones(){
 		game.onCollideDo(boton,{chocado => chocado.tocarBoton()})
 		game.onCollideDo(bandera,{chocado => bandera.ganador()})
 		
 		// Interactua con objetos y con la caja
 		game.onCollideDo(personaje,{chocado => chocado.interactuar()})
 	}
+	
+	/*override method proximoNivel(){
+		return nivel1
+	}
+	*/
 }
+
+/*
+ 	object nivel1 inherits Nivel {
+	
+	method configurarJuego()
+	method agregarObstaculos()
+	method agregarObjetos()
+	method agregarEnemigos()
+	
+	method interacciones()
+	method extras()
+	
+}
+*/
