@@ -13,7 +13,7 @@ const pos4 = new Slot(position = game.at(10,14))
 const pos5 = new Slot(position = game.at(11,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(0,1)
+	var property posicionReaparicion = game.at(19,3)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "jerryDer.png"
@@ -41,8 +41,7 @@ object personaje {
  	
  	method equiparObjeto(pos){
 	 	if (objetoEnMano == self.objetoEnPos(pos)){
-	 		objetoEnMano = vacio
-	 		objetoEnMano.equipar(direccion)
+	 		self.equiparVacio()
 	 	}else{
 	 		if (!inventario.get(pos).vacio() and objetoEnMano != self.objetoEnPos(pos)){
 		 		objetoEnMano = self.objetoEnPos(pos)
@@ -69,26 +68,22 @@ object personaje {
 		anterior = position
 		position = position.right(1)
 	}	
-	method arribaSiPuede() {
-		if (game.hasVisual(position.up(1))){
-			anterior = position
-			position = position.up(1)
-		}
-	}
-	method arriba(){
+	method arriba(n){
 		anterior = position
-		position = position.up(1)
+		position = position.up(n)
 	}
-	method abajoSiPuede(){
-		if (game.hasVisual(position.up(1))){
-			anterior = position
-			position = position.down(1)
-		}
+	method subirEscalera(n){
+		self.arriba(n)
 	}
-	method subirEscalera(){
-		self.arriba()
-		self.arriba()
-	}
+	method agacharse(){
+		if (image == "casco.png"){
+			self.equiparVacio()
+	 	}else{
+			objetoEnMano = agachado
+	 		image = "casco.png"
+			}
+ 		}
+		
 	
 	
 	// Vidas:
@@ -123,6 +118,7 @@ object personaje {
 		corazones.find({cora => cora.image() == "corazonLLeno.png"})
 }
 
+// Objetos de posicion
 object derecha{
 	method imagen(objeto) = objeto.imagenDer()
 }
@@ -130,6 +126,21 @@ object derecha{
 object izquierda{
 	method imagen(objeto) = objeto.imagenIzq()
 }
+
+object agachado{
+	method imagenIzq() = "casco.png"
+	method imagenDer() = "morty.png"
+	
+	method equipar(direccion){
+		personaje.objetoEnMano(self)
+		personaje.image(direccion.imagen(self))
+	}
+	
+	method usar(){
+		game.say(personaje,"No tengo \n nada equipado.")
+	}
+}
+
 
 class Slot{
 	var property position
@@ -169,6 +180,7 @@ object vacio{
 	method imagenDer() = "jerryDer.png"
 	
 	method equipar(direccion){
+		personaje.objetoEnMano(self)
 		personaje.image(direccion.imagen(self))
 	}
 	

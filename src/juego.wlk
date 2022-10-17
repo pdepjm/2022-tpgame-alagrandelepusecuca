@@ -10,10 +10,11 @@ object juego{
 
 	method iniciar(){
 		self.configurarJuego()
-		//self.agregarInventario()
-		//self.configurarPersonaje()
-		//self.interaccionesGenerales()
-		//nivelActual.iniciar()	
+		self.agregarInventario()
+		self.configurarPersonaje()
+		self.interaccionesGenerales()
+		nivelActual.iniciar()
+		game.start()	
 	}
 
 	method siguienteNivel(){
@@ -38,16 +39,15 @@ object juego{
 		// Movimientos:
 		keyboard.left().onPressDo({personaje.izquierda()})
 		keyboard.right().onPressDo({personaje.derecha()})
-		keyboard.down().onPressDo({personaje.abajoSiPuede()})
-		keyboard.up().onPressDo({personaje.arribaSiPuede()})
+		keyboard.control().onPressDo({personaje.agacharse()})
 		
 		// Inventario:
 		keyboard.space().onPressDo({personaje.objetoEnMano().usar()})
-		keyboard.q().onPressDo({personaje.equiparObjeto(0)})
-		keyboard.w().onPressDo({personaje.equiparObjeto(1)})
-		keyboard.e().onPressDo({personaje.equiparObjeto(2)})
-		keyboard.r().onPressDo({personaje.equiparObjeto(3)})
-		keyboard.t().onPressDo({personaje.equiparObjeto(4)})
+		keyboard.num1().onPressDo({personaje.equiparObjeto(0)})
+		keyboard.num2().onPressDo({personaje.equiparObjeto(1)})
+		keyboard.num3().onPressDo({personaje.equiparObjeto(2)})
+		keyboard.num4().onPressDo({personaje.equiparObjeto(3)})
+		keyboard.num5().onPressDo({personaje.equiparObjeto(4)})
 		
 		// Vidas:
 		game.addVisual(corazon1)
@@ -70,16 +70,12 @@ class Nivel {
 	
 	// Metodos abstractos:	
 	method agregarObstaculos()
+	method iniciar()
 
-	method agregarObjetos(){}
 	method agregarEnemigos(){}
+	method agregarObjetos(){}
 	method interacciones(){}
 
-	method iniciar(){
-		self.agregarObstaculos()
-		self.agregarObjetos()
-		self.agregarEnemigos()
-	}
 	
 	// Metodos para agregar obstaculos
 	method nuevoBloque(posicion,imagen){
@@ -95,11 +91,21 @@ class Nivel {
 		const fuego = new Fuego(position = posicion,image = "fuego.png")
 		fuego.fuegoIntermitente()
 	}
+	method nuevaEscaleraTriple(posicion){
+		const escalera = new Escalera(position = posicion)
+		game.addVisual(escalera)
+		escalera.escalable()
+	}
 }
 
 
 object nivel0 inherits Nivel {
-	
+	override method iniciar(){
+		self.agregarObjetos()
+		self.agregarObstaculos()
+		self.interacciones()
+	}
+
 	override method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 5)
@@ -116,7 +122,7 @@ object nivel0 inherits Nivel {
 	override method agregarObjetos(){
 		game.addVisual(caja)
 		game.addVisual(boton)
-		game.addVisual(banderaRoja)
+		game.addVisual(banderaRoja1)
 		game.addVisual(kit)
 		game.addVisual(espada)
 		self.nuevoObjeto(game.at(4,2),"escaleraDoble.png")
@@ -131,21 +137,25 @@ object nivel0 inherits Nivel {
 }
 
 object nivel1 inherits Nivel {
+	override method iniciar(){
+		self.agregarObstaculos()
+		self.agregarObjetos()
+		self.agregarEnemigos()
+		game.removeVisual(personaje)
+		game.addVisual(personaje)
+	}
+
+	override method agregarObjetos(){
+		self.nuevaEscaleraTriple(game.at(22,3))
+	}
 
 	override method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 23)
-				self.nuevoBloque(game.at(col-1,2),"piedra.jpg")}
-		
-		game.width().times{col=> 
-			self.nuevoBloque(game.at(col-1,0),"tierra.png")}
-		
-		self.nuevoFuego(game.at(8,3))
-		game.schedule(350,{self.nuevoFuego(game.at(12,3))})
-		
+				self.nuevoBloque(game.at(col-1,4),"piedra.jpg")}
 	}
 			
-	override method agregarEnemigos(){
+	method agregarEnemigos(){
 		game.addVisual(caballero)
 	}
 }

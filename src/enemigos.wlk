@@ -3,8 +3,8 @@ import personaje.*
 import interactuables.*
 
 object caballero{
-	var property position = game.at(22,3)
-	var property image = "caballeroIzq.png"
+	var property position = game.at(12,5)
+	var property image = "caballeroDer.png"
 	
 	method interactuar(){
 		if (personaje.objetoEnMano() == espada){
