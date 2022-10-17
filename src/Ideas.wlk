@@ -17,13 +17,13 @@
  * 	numero -> equipo lo que esta en ese lugar	
  * 
  * Objetos: (todos activables)
- * 	Espada -> (se rompe al matar al enemigo)
- *  Botiquin -> activable y  maximo 3 vidas
+ * 	Espada -> (se rompe al matar al enemigo) => Listo
+ *  Botiquin -> activable y  maximo 3 vidas => Listo
  * 	Varita -> al perder una vida pierde la varita
  * 	Casco -> agrega un cuarto corazon (amarillo o escudito) por mas que no tengas 3 vidas
  * 
  * Vidas:
- * 	Si perdes una vida -> El personaje vuelve al principio (o al checkpoint) pero los objetos se quedan en el lugar
+ * 	Si perdes una vida -> El personaje vuelve al principio (o al checkpoint) pero los objetos se quedan en el lugar => Listo
  *  Si te quedas sin vidas -> pantalla de que perdiste y te manda al menu 
  * 
  * Cosas que te maten:
@@ -35,4 +35,9 @@
  * 
  * Importante:
  * 	Mucho polimorfismo y herencia
+
+Faltaria arreglar:
+    subir escalera
+    cuando la caja toca el boton
  */
+

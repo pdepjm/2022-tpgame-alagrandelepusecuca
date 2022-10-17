@@ -13,7 +13,7 @@ const pos4 = new Slot(position = game.at(10,14))
 const pos5 = new Slot(position = game.at(11,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(13,3)
+	var property posicionReaparicion = game.at(0,1)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "jerryDer.png"
@@ -35,7 +35,7 @@ object personaje {
  	
  	method equiparVacio(){
  		self.objetoEnMano(vacio)
-		self.image(vacio.imagenDer())
+		vacio.equipar(direccion)
  	}
 
  	
@@ -69,15 +69,21 @@ object personaje {
 		anterior = position
 		position = position.right(1)
 	}	
-	method arriba() {
-		if (!game.hasVisual(position)){
+	method arribaSiPuede() {
+		if (game.hasVisual(position.up(1))){
 			anterior = position
 			position = position.up(1)
 		}
-	}	
-	method abajo(){
+	}
+	method arriba(){
 		anterior = position
-		position = position.down(1)
+		position = position.up(1)
+	}
+	method abajoSiPuede(){
+		if (game.hasVisual(position.up(1))){
+			anterior = position
+			position = position.down(1)
+		}
 	}
 	method subirEscalera(){
 		self.arriba()

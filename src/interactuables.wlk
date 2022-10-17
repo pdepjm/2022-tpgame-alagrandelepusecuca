@@ -2,6 +2,7 @@ import wollok.game.*
 import personaje.*
 import obstaculos.*
 import extras.*
+import juego.*
 
 
 class Objeto{
@@ -36,6 +37,7 @@ object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
 	} 	
 
 	method tocarBoton(){
+		game.say(personaje,"la caja toco el boton")
 		self.moverIzquierda()
 		self.image("cajaMovida.png")
 		boton.image("botonApretado.png")
@@ -50,10 +52,9 @@ object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
 	}
 }
 
-object bandera inherits Objeto(position = game.at(24,3),image = "banderaFin.png"){	
-	method ganador(){
-		game.clear()
-		game.addVisual(ganaste)
+object banderaRoja inherits Objeto(position = game.at(20,3),image = "banderaFin.png"){	
+	override method interactuar(){
+		juego.siguienteNivel()
 	}
 }
 
