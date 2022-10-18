@@ -37,8 +37,6 @@ object personaje {
  		self.objetoEnMano(vacio)
 		vacio.equipar(direccion)
  	}
-
- 	
  	method equiparObjeto(pos){
 	 	if (objetoEnMano == self.objetoEnPos(pos)){
 	 		self.equiparVacio()
