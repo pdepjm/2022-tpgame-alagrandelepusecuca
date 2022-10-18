@@ -45,16 +45,17 @@ object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
 			game.addVisual(escaleraAbajo)
 			game.removeVisual(personaje)
 			game.addVisual(personaje)
-			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera(2)})
+			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera(3)})
 		}	
 		
 	}
 }
 
-object banderaRoja1 inherits Objeto(position = game.at(20,3),image = "banderaFin.png"){	
+object banderaRoja1 inherits Objeto(position = game.at(20,4),image = "banderaBaja.png"){	
 	var pasoNivel = false
 	override method interactuar(){
 		if (!pasoNivel){
+			image = "banderaAlta.png"
 			juego.siguienteNivel()
 			pasoNivel = true
 			personaje.posicionReaparicion(position)
@@ -65,9 +66,9 @@ object banderaRoja1 inherits Objeto(position = game.at(20,3),image = "banderaFin
 const boton = new Objeto(position =game.at(24,1),image = "boton.png")
 
 // Escaleras
-class Escalera inherits Objeto(image = "escaleraTriple.png"){
+class Escalera inherits Objeto(image = "escaleraCuadruple.png"){
 	method escalable(){
-		game.onCollideDo(self,{chocado => chocado.subirEscalera(2)})
+		game.onCollideDo(self,{chocado => chocado.subirEscalera(3)})
 	}
 }
 
@@ -96,7 +97,7 @@ class ObjetoUsable inherits Objeto{
 
 // Objetos que pueden ir al inventario:
 // Deberian entender imagenIzq(), imagenDer() y usar()
-object kit inherits ObjetoUsable(position = game.at(18,3), image = "kit.png"){
+object kit inherits ObjetoUsable(position = game.at(18,4), image = "kit.png"){
 	
 	method imagenIzq() = "jerryKitIzq.png"
 	override method imagenDer() = "jerryKitDer.png"
@@ -110,7 +111,7 @@ object kit inherits ObjetoUsable(position = game.at(18,3), image = "kit.png"){
 	}
 }
 
-object espada inherits ObjetoUsable(position = game.at(2,3), image = "espada.png"){
+object espada inherits ObjetoUsable(position = game.at(2,4), image = "espada.png"){
 	method imagenIzq() = "espadaEnUsoIzq.png"
 	override method imagenDer() = "espadaEnUsoDer.png"
 }
