@@ -6,14 +6,14 @@ const corazon1 = new Corazon(position = game.at(0,14))
 const corazon2 = new Corazon(position = game.at(1,14))
 const corazon3 = new Corazon(position = game.at(2,14),image = "corazonVacio.png")
 
-const pos1 = new Slot(position = game.at(7,14))
-const pos2 = new Slot(position = game.at(8,14))
-const pos3 = new Slot(position = game.at(9,14))
-const pos4 = new Slot(position = game.at(10,14))
-const pos5 = new Slot(position = game.at(11,14))
+const pos1 = new Slot(position = game.at(8,14))
+const pos2 = new Slot(position = game.at(9,14))
+const pos3 = new Slot(position = game.at(10,14))
+const pos4 = new Slot(position = game.at(11,14))
+const pos5 = new Slot(position = game.at(12,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(19,3)
+	var property posicionReaparicion = game.at(1,1)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "jerryDer.png"
@@ -76,11 +76,11 @@ object personaje {
 		self.arriba(n)
 	}
 	method agacharse(){
-		if (image == "casco.png"){
+		if (objetoEnMano == agachado){
 			self.equiparVacio()
 	 	}else{
 			objetoEnMano = agachado
-	 		image = "casco.png"
+	 		image = direccion.imagen(objetoEnMano)
 			}
  		}
 		
@@ -128,8 +128,8 @@ object izquierda{
 }
 
 object agachado{
-	method imagenIzq() = "casco.png"
-	method imagenDer() = "morty.png"
+	method imagenIzq() = "jerryAcostadoIzq.png"
+	method imagenDer() = "jerryAcostadoDer.png"
 	
 	method equipar(direccion){
 		personaje.objetoEnMano(self)
@@ -141,7 +141,7 @@ object agachado{
 	}
 }
 
-
+// Inventario:
 class Slot{
 	var property position
 	var property image = "marcoInventario.png"
