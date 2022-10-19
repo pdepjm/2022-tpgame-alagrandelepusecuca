@@ -168,6 +168,10 @@ object nivel1 inherits Nivel {
 		game.width().times{col=> 
 			if (col != 23)
 				self.nuevoBloque(game.at(col-1,6),"bloques/piedra.jpg")}
+				
+	    //self.nuevoPinche(game.at(16,6))
+		//game.schedule(350,{self.nuevoPinche(game.at(10,6))})
+	
 	}
 			
 	override method agregarEnemigos(){
