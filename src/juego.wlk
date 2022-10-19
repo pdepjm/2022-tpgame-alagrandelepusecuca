@@ -93,6 +93,15 @@ class Nivel {
 		const fuego = new Fuego(position = posicion,image = "enemigos/fuego.png")
 		fuego.fuegoIntermitente()
 	}
+	
+	// nuevoPinche
+	// method nuevoPinche(posicion){
+	//	const pincheAlto = new Pinche(position = posicion,image = "pincheAlto.png")
+	//  const pincheMedio = new Pinche(position = posicion,image = "pincheMedio.png")
+	//  const pincheBajo = new Pinche(position = posicion,image = "pincheBajo.png")
+	//	pinche.pincheIntermitente()
+	//}
+	
 	method nuevaEscaleraCuadruple(posicion){
 		const escalera = new Escalera(position = posicion)
 		game.addVisual(escalera)
