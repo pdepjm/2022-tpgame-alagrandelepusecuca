@@ -14,6 +14,9 @@ object juego{
 		self.configurarPersonaje()
 		self.interaccionesGenerales()
 		nivelActual.iniciar()
+		game.addVisual(flecha)
+		flecha.cambiarImagen()
+		flecha.moverse()
 		game.start()	
 	}
 
@@ -81,20 +84,22 @@ class Nivel {
 	method nuevoBloque(posicion,imagen){
 		const bloque = new Bloque(position = posicion,image = imagen)
 		game.addVisual(bloque)
-		bloque.noDejaPasar()
 	}
 	method nuevoObjeto(posicion,imagen){
 		const objeto = new Objeto(position = posicion,image = imagen)
 		game.addVisual(objeto)
 	}
 	method nuevoFuego(posicion){
-		const fuego = new Fuego(position = posicion,image = "fuego.png")
+		const fuego = new Fuego(position = posicion,image = "enemigos/fuego.png")
 		fuego.fuegoIntermitente()
 	}
 	method nuevaEscaleraCuadruple(posicion){
 		const escalera = new Escalera(position = posicion)
 		game.addVisual(escalera)
-		escalera.escalable()
+	}
+	method nuevaBanderaRoja(posicion){
+		const bandera = new BanderaRoja(position = posicion)
+		game.addVisual(bandera)
 	}
 }
 
@@ -109,10 +114,10 @@ object nivel0 inherits Nivel {
 	override method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 5)
-				self.nuevoBloque(game.at(col-1,3),"piedra.jpg")}
+				self.nuevoBloque(game.at(col-1,3),"bloques/piedra.jpg")}
 		
 		game.width().times{col=> 
-			self.nuevoBloque(game.at(col-1,0),"tierra.png")}
+			self.nuevoBloque(game.at(col-1,0),"bloques/tierra.png")}
 		
 		self.nuevoFuego(game.at(8,4))
 		game.schedule(350,{self.nuevoFuego(game.at(12,4))})
@@ -122,10 +127,10 @@ object nivel0 inherits Nivel {
 	override method agregarObjetos(){
 		game.addVisual(caja)
 		game.addVisual(boton)
-		game.addVisual(banderaRoja1)
 		game.addVisual(kit)
 		game.addVisual(espada)
-		self.nuevoObjeto(game.at(4,2),"escaleraTriple.png")
+		self.nuevaBanderaRoja(game.at(20,4))
+		self.nuevoObjeto(game.at(4,2),"escaleras/escaleraTriple.png")
 		
 	}
 	
@@ -147,15 +152,30 @@ object nivel1 inherits Nivel {
 
 	override method agregarObjetos(){
 		self.nuevaEscaleraCuadruple(game.at(22,4))
+		self.nuevaBanderaRoja(game.at(3,7))
 	}
 
 	override method agregarObstaculos(){
 		game.width().times{col=> 
 			if (col != 23)
-				self.nuevoBloque(game.at(col-1,6),"piedra.jpg")}
+				self.nuevoBloque(game.at(col-1,6),"bloques/piedra.jpg")}
 	}
 			
 	override method agregarEnemigos(){
 		game.addVisual(caballero)
+	}
+	
+	override method proximoNivel() = nivel2
+}
+
+object nivel2 inherits Nivel{
+	override method iniciar(){
+		self.agregarObstaculos()
+	}
+
+	override method agregarObstaculos(){
+		4.times{col =>
+			if (col != 2)
+			self.nuevoBloque(game.at(col-1,6),"bloques/piedra.jpg")}
 	}
 }

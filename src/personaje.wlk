@@ -6,17 +6,17 @@ const corazon1 = new Corazon(position = game.at(0,14))
 const corazon2 = new Corazon(position = game.at(1,14))
 const corazon3 = new Corazon(position = game.at(2,14),image = "corazonVacio.png")
 
-const pos1 = new Slot(position = game.at(8,14))
-const pos2 = new Slot(position = game.at(9,14))
-const pos3 = new Slot(position = game.at(10,14))
-const pos4 = new Slot(position = game.at(11,14))
-const pos5 = new Slot(position = game.at(12,14))
+const pos1 = new Slot(position = game.at(10,14))
+const pos2 = new Slot(position = game.at(11,14))
+const pos3 = new Slot(position = game.at(12,14))
+const pos4 = new Slot(position = game.at(13,14))
+const pos5 = new Slot(position = game.at(14,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(1,1)
+	var property posicionReaparicion = game.at(0,4)
 	var property position = posicionReaparicion
 	var property anterior
-	var property image = "jerryDer.png"
+	var property image = "movimiento/jerryDer.png"
 	
 	var property direccion = derecha
 	
@@ -93,7 +93,7 @@ object personaje {
 		else
 			self.restarVida()
 		position = posicionReaparicion
-		image = "jerryDer.png"
+		image = "movimiento/jerryDer.png"
 		objetoEnMano = vacio
 	}	
 	
@@ -126,8 +126,8 @@ object izquierda{
 }
 
 object agachado{
-	method imagenIzq() = "jerryAcostadoIzq.png"
-	method imagenDer() = "jerryAcostadoDer.png"
+	method imagenIzq() = "movimiento/jerryAcostadoIzq.png"
+	method imagenDer() = "movimiento/jerryAcostadoDer.png"
 	
 	method equipar(direccion){
 		personaje.objetoEnMano(self)
@@ -142,7 +142,7 @@ object agachado{
 // Inventario:
 class Slot{
 	var property position
-	var property image = "marcoInventario.png"
+	var property image = "bloques/marcoInventario.png"
 	var property objetoGuardado = null
 	
 	method vacio() = objetoGuardado == null
@@ -153,7 +153,6 @@ class Slot{
 		objetoGuardado = objeto
 	}
 	method vaciarSlot(){
-		image = "marcoInventario.png"
 		objetoGuardado = null
 	}
 }
@@ -174,8 +173,8 @@ class Corazon{
 }
 
 object vacio{
-	method imagenIzq() = "jerryIzq.png"
-	method imagenDer() = "jerryDer.png"
+	method imagenIzq() = "movimiento/jerryIzq.png"
+	method imagenDer() = "movimiento/jerryDer.png"
 	
 	method equipar(direccion){
 		personaje.objetoEnMano(self)

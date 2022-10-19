@@ -1,5 +1,6 @@
 import wollok.game.*
 import personaje.*
+import enemigos.*
 import obstaculos.*
 import extras.*
 import juego.*
@@ -14,7 +15,7 @@ class Objeto{
 }
 
 
-object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
+object caja inherits Objeto(position =game.at(2,1),image = "nivel0/cajaMadera.jpg"){
 	method moverDerecha(){
 		position = position.right(1)
 	}
@@ -38,24 +39,23 @@ object caja inherits Objeto(position =game.at(2,1),image = "cajaMadera.jpg"){
 
 	method tocarBoton(){
 		self.moverIzquierda()
-		self.image("cajaMovida.png")
-		boton.image("botonApretado.png")
+		self.image("nivel0/cajaMovida.png")
+		boton.image("nivel0/botonApretado.png")
 		personaje.rebotar()
 		if (!game.hasVisual(escaleraAbajo)){
 			game.addVisual(escaleraAbajo)
 			game.removeVisual(personaje)
 			game.addVisual(personaje)
-			game.onCollideDo(escaleraAbajo,{chocado => chocado.subirEscalera(3)})
 		}	
 		
 	}
 }
 
-object banderaRoja1 inherits Objeto(position = game.at(20,4),image = "banderaBaja.png"){	
+class BanderaRoja inherits Objeto(image = "banderas/banderaBaja.png"){	
 	var pasoNivel = false
 	override method interactuar(){
 		if (!pasoNivel){
-			image = "banderaAlta.png"
+			image = "banderas/banderaAlta.png"
 			juego.siguienteNivel()
 			pasoNivel = true
 			personaje.posicionReaparicion(position)
@@ -63,16 +63,16 @@ object banderaRoja1 inherits Objeto(position = game.at(20,4),image = "banderaBaj
 	}
 }
 
-const boton = new Objeto(position =game.at(24,1),image = "boton.png")
+const boton = new Objeto(position =game.at(24,1),image = "nivel0/boton.png")
 
 // Escaleras
-class Escalera inherits Objeto(image = "escaleraCuadruple.png"){
-	method escalable(){
-		game.onCollideDo(self,{chocado => chocado.subirEscalera(3)})
+class Escalera inherits Objeto(image = "escaleras/escaleraCuadruple.png"){
+	method interactuar(){
+		personaje.subirEscalera(3)
 	}
 }
 
-const escaleraAbajo = new Objeto(position = game.at(4,1),image = "escalera.png")
+const escaleraAbajo = new Escalera(position = game.at(4,1),image = "escaleras/escalera.png")
 
 class ObjetoUsable inherits Objeto{
 	var property posicion = null
@@ -97,10 +97,10 @@ class ObjetoUsable inherits Objeto{
 
 // Objetos que pueden ir al inventario:
 // Deberian entender imagenIzq(), imagenDer() y usar()
-object kit inherits ObjetoUsable(position = game.at(18,4), image = "kit.png"){
+object kit inherits ObjetoUsable(position = game.at(18,4), image = "objetos/kit.png"){
 	
-	method imagenIzq() = "jerryKitIzq.png"
-	override method imagenDer() = "jerryKitDer.png"
+	method imagenIzq() = "objetos/jerryKitIzq.png"
+	override method imagenDer() = "objetos/jerryKitDer.png"
 	
 	override method usar(){
 		if (personaje.objetoEnMano() == self){
@@ -111,9 +111,12 @@ object kit inherits ObjetoUsable(position = game.at(18,4), image = "kit.png"){
 	}
 }
 
-object espada inherits ObjetoUsable(position = game.at(2,4), image = "espada.png"){
-	method imagenIzq() = "espadaEnUsoIzq.png"
-	override method imagenDer() = "espadaEnUsoDer.png"
+object espada inherits ObjetoUsable(position = game.at(2,4), image = "objetos/espada.png"){
+	method imagenIzq() = "objetos/jerryEspadaIzq.png"
+	override method imagenDer() = "objetos/jerryEspadaDer.png"
 }
 
-
+object escudo inherits ObjetoUsable(position = caballero.position().left(1),image = "objetos/escudo.png"){
+	method imagenIzq() = "objetos/jerryEscudoIzq.png"
+	override method imagenDer() = "objetos/jerryEscudoDer.png"
+}
