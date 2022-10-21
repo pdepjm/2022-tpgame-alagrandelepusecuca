@@ -17,7 +17,6 @@ object juego{
 		game.addVisual(flecha)
 		flecha.cambiarImagen()
 		flecha.moverse()
-		game.start()	
 	}
 
 	method siguienteNivel(){
@@ -33,7 +32,6 @@ object juego{
 		game.title("Las aventuras de Jerry")
 		game.width(25)
 		game.height(15)
-		game.boardGround("fondo.jpg")	
 	}
 	
 	method configurarPersonaje(){

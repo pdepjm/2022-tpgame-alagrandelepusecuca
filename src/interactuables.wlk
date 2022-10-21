@@ -67,7 +67,7 @@ const boton = new Objeto(position =game.at(24,1),image = "nivel0/boton.png")
 
 // Escaleras
 class Escalera inherits Objeto(image = "escaleras/escaleraCuadruple.png"){
-	method interactuar(){
+	override method interactuar(){
 		personaje.subirEscalera(3)
 	}
 }

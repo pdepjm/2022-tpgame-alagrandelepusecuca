@@ -19,7 +19,7 @@ class Fuego inherits Objeto{
 		}
 	}
 
-	method interactuar(){
+	override method interactuar(){
 		personaje.muere()
 	}
 }

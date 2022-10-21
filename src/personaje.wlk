@@ -83,7 +83,6 @@ object personaje {
  		}
 		
 	
-	
 	// Vidas:
 	method muere(){
 		if(self.vidasRestantes() == 1){

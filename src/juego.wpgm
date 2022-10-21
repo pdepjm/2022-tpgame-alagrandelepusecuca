@@ -1,5 +1,8 @@
 import juego.*
+import inicioManager.*
+import wollok.game.*
 
 program juego {
-	juego.iniciar()
+	inicioManager.inicializar()
+	game.start()
 }
