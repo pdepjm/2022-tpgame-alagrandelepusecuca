@@ -14,9 +14,6 @@ object juego{
 		self.configurarPersonaje()
 		self.interaccionesGenerales()
 		nivelActual.iniciar()
-		game.addVisual(flecha)
-		flecha.cambiarImagen()
-		flecha.moverse()
 	}
 
 	method siguienteNivel(){
@@ -93,12 +90,14 @@ class Nivel {
 	}
 	
 	// nuevoPinche
-	// method nuevoPinche(posicion){
-	//	const pincheAlto = new Pinche(position = posicion,image = "pincheAlto.png")
-	//  const pincheMedio = new Pinche(position = posicion,image = "pincheMedio.png")
-	//  const pincheBajo = new Pinche(position = posicion,image = "pincheBajo.png")
-	//	pinche.pincheIntermitente()
-	//}
+	method nuevoPinche(posicion){
+		const pincheAlto = new Pinche(position = posicion)
+		//const pincheMedio = new Pinche(position = posicion,image = "pinches/pincheMedio.png")
+		//const pincheBajo = new Pinche(position = posicion,image = "pinches/pincheBajo.png")
+		pincheAlto.pincheIntermitente()
+		//pincheMedio.pincheIntermitente()
+		//pincheBajo.pincheIntermitente()
+	}
 	
 	method nuevaEscaleraCuadruple(posicion){
 		const escalera = new Escalera(position = posicion)
@@ -116,6 +115,7 @@ object nivel0 inherits Nivel {
 		self.agregarObjetos()
 		self.agregarObstaculos()
 		self.interacciones()
+		self.agregarEnemigos()
 	}
 
 	override method agregarObstaculos(){
@@ -131,6 +131,12 @@ object nivel0 inherits Nivel {
 		
 	}
 	
+	override method agregarEnemigos(){
+		game.addVisual(flecha)
+		flecha.cambiarImagen()
+		flecha.moverse()
+	}
+
 	override method agregarObjetos(){
 		game.addVisual(caja)
 		game.addVisual(boton)
@@ -167,9 +173,8 @@ object nivel1 inherits Nivel {
 			if (col != 23)
 				self.nuevoBloque(game.at(col-1,6),"bloques/piedra.jpg")}
 				
-	    //self.nuevoPinche(game.at(16,6))
-		//game.schedule(350,{self.nuevoPinche(game.at(10,6))})
-	
+	    self.nuevoPinche(game.at(16,7))
+		game.schedule(350,{self.nuevoPinche(game.at(8,7))})
 	}
 			
 	override method agregarEnemigos(){
@@ -182,11 +187,25 @@ object nivel1 inherits Nivel {
 object nivel2 inherits Nivel{
 	override method iniciar(){
 		self.agregarObstaculos()
+		self.agregarObjetos()
+		self.agregarEnemigos()
+	}
+	
+	override method agregarObjetos(){
+		self.nuevaEscaleraCuadruple(game.at(1,7))
+		game.addVisual(banderaFinal)
+		game.addVisual(varita)
 	}
 
 	override method agregarObstaculos(){
-		4.times{col =>
+		game.width().times{col=> 
 			if (col != 2)
-			self.nuevoBloque(game.at(col-1,6),"bloques/piedra.jpg")}
+				self.nuevoBloque(game.at(col-1,9),"bloques/piedra.jpg")
+				}
+	}
+
+	override method agregarEnemigos(){
+		game.addVisual(mago)
+		game.schedule(350,{mago.disparar()})
 	}
 }

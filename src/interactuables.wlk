@@ -59,6 +59,8 @@ class BanderaRoja inherits Objeto(image = "banderas/banderaBaja.png"){
 			juego.siguienteNivel()
 			pasoNivel = true
 			personaje.posicionReaparicion(position)
+			game.removeVisual(personaje)
+			game.addVisual(personaje)
 		}
 	}
 }
@@ -74,10 +76,15 @@ class Escalera inherits Objeto(image = "escaleras/escaleraCuadruple.png"){
 
 const escaleraAbajo = new Escalera(position = game.at(4,1),image = "escaleras/escalera.png")
 
+object banderaFinal inherits Objeto(position = game.at(24,10), image = "banderas/banderaFin.png"){
+	override method interactuar(){
+		personaje.ganaste()
+	}
+}
+
+
 class ObjetoUsable inherits Objeto{
 	var property posicion = null
-	
-	method imagenDer()
 	
 	override method interactuar(){
 		// En realidad lo guarda
@@ -95,12 +102,39 @@ class ObjetoUsable inherits Objeto{
 	}
 }
 
+object varita inherits ObjetoUsable(position = game.at(0,10),image = "objetos/varita.png"){
+	
+	method imageIzq() = "objetos/jerryVaritaIzq.png"
+	method imagenDer() = "objetos/jerryVaritaDer.png"
+
+	override method usar(){
+		if(personaje.objetoEnMano() == self){
+			self.crearFuego()
+		}
+	}
+	method crearFuego(){
+		const fueguito = new FuegoBala()
+		game.onTick(1000,"Disparo",{fueguito.moverse()})
+		game.onCollideDo(fueguito,{chocado => fueguito.quemar(chocado)})
+	}
+}
+
+
+class FuegoBala inherits Objeto(position = personaje.position().right(1),image = "objetos/fueguito.png"){
+	method moverse(){
+		position = position.right(1)
+	}
+	method quemar(objeto){
+		game.removeVisual(self)
+	}
+}
+
 // Objetos que pueden ir al inventario:
 // Deberian entender imagenIzq(), imagenDer() y usar()
 object kit inherits ObjetoUsable(position = game.at(18,4), image = "objetos/kit.png"){
 	
 	method imagenIzq() = "objetos/jerryKitIzq.png"
-	override method imagenDer() = "objetos/jerryKitDer.png"
+	method imagenDer() = "objetos/jerryKitDer.png"
 	
 	override method usar(){
 		if (personaje.objetoEnMano() == self){
@@ -113,10 +147,10 @@ object kit inherits ObjetoUsable(position = game.at(18,4), image = "objetos/kit.
 
 object espada inherits ObjetoUsable(position = game.at(2,4), image = "objetos/espada.png"){
 	method imagenIzq() = "objetos/jerryEspadaIzq.png"
-	override method imagenDer() = "objetos/jerryEspadaDer.png"
+	method imagenDer() = "objetos/jerryEspadaDer.png"
 }
 
 object escudo inherits ObjetoUsable(position = caballero.position().left(1),image = "objetos/escudo.png"){
 	method imagenIzq() = "objetos/jerryEscudoIzq.png"
-	override method imagenDer() = "objetos/jerryEscudoDer.png"
+	method imagenDer() = "objetos/jerryEscudoDer.png"
 }

@@ -13,7 +13,7 @@ const pos4 = new Slot(position = game.at(13,14))
 const pos5 = new Slot(position = game.at(14,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(0,4)
+	var property posicionReaparicion = game.at(20,4)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "movimiento/jerryDer.png"
@@ -81,6 +81,21 @@ object personaje {
 	 		image = direccion.imagen(objetoEnMano)
 			}
  		}
+
+	method disparar(){
+		self.crearFuego()
+		game.onTick(2000,"DisparoFuego",{self.crearFuego()})
+	}
+	method crearFuego(){
+		const fueguito = new FuegoBala()
+		game.addVisual(fueguito)
+		game.onTick(1000,"DisparoFuego",{fueguito.moverse()})
+	}
+
+	method ganaste(){
+ 		game.clear()
+		game.schedule(350,{game.addVisual(ganaste)})
+ 	}
 		
 	
 	// Vidas:
@@ -184,3 +199,4 @@ object vacio{
 		game.say(personaje,"No tengo \n nada equipado.")
 	}
 }
+

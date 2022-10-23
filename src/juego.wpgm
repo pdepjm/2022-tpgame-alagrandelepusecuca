@@ -2,7 +2,7 @@ import juego.*
 import inicioManager.*
 import wollok.game.*
 
-program juego {
+program juego{
 	inicioManager.inicializar()
 	game.start()
 }
