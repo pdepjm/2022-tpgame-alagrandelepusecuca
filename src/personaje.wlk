@@ -13,7 +13,7 @@ const pos4 = new Slot(position = game.at(13,14))
 const pos5 = new Slot(position = game.at(14,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(20,4)
+	var property posicionReaparicion = game.at(0,4)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "movimiento/jerryDer.png"

@@ -37,16 +37,8 @@ class Pinche inherits Objeto(image = "pinches/pincheBajo.png"){
 		else
 			self.bajarPinche()
 	}
-
-	method titila(){
-		if(game.hasVisual(self))
-			game.removeVisual(self)
-		else{
-			game.addVisual(self)
-		}
-	}
-
-	method interactuar(){
+	
+	override method interactuar(){
 		personaje.muere()
 	}
 	

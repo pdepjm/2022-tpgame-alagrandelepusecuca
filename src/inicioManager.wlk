@@ -18,16 +18,5 @@ object inicioManager {
 object pantallaInicio {
 	const property image = "pantallaInicio.png"
 	const property position = game.origin()
-}
-
-/*	
-	method inicializar() {
-		game.width(25)
-		game.height(15)
-		game.boardGround("pantallaInicio.png")
-		keyboard.enter().onPressDo {
-			juego.iniciar()
-		}
-	}
-*/	
+}	
 

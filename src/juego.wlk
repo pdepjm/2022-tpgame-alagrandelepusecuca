@@ -88,15 +88,17 @@ class Nivel {
 		const fuego = new Fuego(position = posicion,image = "enemigos/fuego.png")
 		fuego.fuegoIntermitente()
 	}
+
+	method nuevaFlecha(){
+		const flecha = new Flecha()
+		game.addVisual(flecha)
+		flecha.flechaIntermitente()
+	}
 	
 	// nuevoPinche
 	method nuevoPinche(posicion){
-		const pincheAlto = new Pinche(position = posicion)
-		//const pincheMedio = new Pinche(position = posicion,image = "pinches/pincheMedio.png")
-		//const pincheBajo = new Pinche(position = posicion,image = "pinches/pincheBajo.png")
-		pincheAlto.pincheIntermitente()
-		//pincheMedio.pincheIntermitente()
-		//pincheBajo.pincheIntermitente()
+		const pinche = new Pinche(position = posicion)
+		pinche.pincheIntermitente()
 	}
 	
 	method nuevaEscaleraCuadruple(posicion){
@@ -132,9 +134,8 @@ object nivel0 inherits Nivel {
 	}
 	
 	override method agregarEnemigos(){
-		game.addVisual(flecha)
-		flecha.cambiarImagen()
-		flecha.moverse()
+		self.nuevaFlecha()
+		game.onTick(5000,"",{self.nuevaFlecha()})
 	}
 
 	override method agregarObjetos(){

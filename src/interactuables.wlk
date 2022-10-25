@@ -102,32 +102,6 @@ class ObjetoUsable inherits Objeto{
 	}
 }
 
-object varita inherits ObjetoUsable(position = game.at(0,10),image = "objetos/varita.png"){
-	
-	method imageIzq() = "objetos/jerryVaritaIzq.png"
-	method imagenDer() = "objetos/jerryVaritaDer.png"
-
-	override method usar(){
-		if(personaje.objetoEnMano() == self){
-			self.crearFuego()
-		}
-	}
-	method crearFuego(){
-		const fueguito = new FuegoBala()
-		game.onTick(1000,"Disparo",{fueguito.moverse()})
-		game.onCollideDo(fueguito,{chocado => fueguito.quemar(chocado)})
-	}
-}
-
-
-class FuegoBala inherits Objeto(position = personaje.position().right(1),image = "objetos/fueguito.png"){
-	method moverse(){
-		position = position.right(1)
-	}
-	method quemar(objeto){
-		game.removeVisual(self)
-	}
-}
 
 // Objetos que pueden ir al inventario:
 // Deberian entender imagenIzq(), imagenDer() y usar()
@@ -153,4 +127,35 @@ object espada inherits ObjetoUsable(position = game.at(2,4), image = "objetos/es
 object escudo inherits ObjetoUsable(position = caballero.position().left(1),image = "objetos/escudo.png"){
 	method imagenIzq() = "objetos/jerryEscudoIzq.png"
 	method imagenDer() = "objetos/jerryEscudoDer.png"
+}
+
+object varita inherits ObjetoUsable(position = game.at(0,10),image = "objetos/varita.png"){
+	
+	method imagenIzq() = "objetos/jerryVaritaIzq.png"
+	method imagenDer() = "objetos/jerryVaritaDer.png"
+
+	override method usar(){
+		if(personaje.objetoEnMano() == self){
+			self.crearFuego(personaje.direccion())
+		}
+	}
+	method crearFuego(direccion){
+		const fueguito = new FuegoBala()
+		game.addVisual(fueguito)
+		
+		fueguito.moverse(direccion)
+		game.onTick(750,"Disparo Fuego",{fueguito.moverse(direccion)})
+		game.onCollideDo(mago,{chocado => mago.quemarse(chocado)})
+	}
+}
+
+
+class FuegoBala inherits Objeto(position = personaje.position(),image = "objetos/fueguito.png"){
+
+	method moverse(direccion){
+		if (direccion == derecha)
+			position = position.right(1)
+		else
+			position = position.left(1)
+	}	
 }
