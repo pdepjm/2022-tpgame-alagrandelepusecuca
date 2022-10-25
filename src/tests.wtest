@@ -1,10 +1,10 @@
-/*
 import wollok.game.*
 import juego.*
 import personaje.*
 import interactuables.*
 import obstaculos.*
 import extras.*
+import enemigos.*
 
 describe "Todos los tests"{
 	method initialize(){
@@ -23,11 +23,41 @@ describe "Todos los tests"{
 		assert.that(game.hasVisual(escaleraAbajo))
 	}
 	test "Cuando el personaje toca la bandera, termina el juego"{
-		game.addVisual(bandera)
-		personaje.position(bandera.position())
-		if (personaje.position() == bandera.position())
-			bandera.ganador()
+		game.addVisual(banderaFinal)
+		personaje.position(banderaFinal.position())
+		if (personaje.position() == banderaFinal.position())
+			banderaFinal.interactuar()
 		assert.that(game.hasVisual(ganaste))
 	}
+	test "Al tocar el pinche, el personaje muere" {
+		nivel1.nuevoPinche(game.at(16,7))
+		personaje.position(game.at(16,7))
+		assert.notThat(game.hasVisual(personaje))
+	}
+	test "Cuando el personaje toca la escalera, sube"{
+		game.addVisual(personaje)
+		personaje.position(game.at(4,2))
+		new Escalera(position = (game.at(4,2)))
+		personaje.subirEscalera(3)
+		assert.that(game.hasVisual(personaje))
+	}
+	test "cuando la flecha impacta al personaje, muere" {
+		nivel0.nuevaFlecha()
+		personaje.position(game.at(20,4))
+		assert.notThat(game.hasVisual(personaje))
+	}
+	test "cuando el personaje equipado con la espada toca al caballero, lo mata" {
+		game.addVisual(personaje)
+		personaje.position(game.at(12,7))
+		personaje.objetoEnMano(espada)
+		caballero.position(game.at(12,7))
+		assert.notThat(game.hasVisual(caballero))
+	}
+	test "cuando el personaje sin equipar toca al caballero, muere" {
+		game.addVisual(personaje)
+		personaje.position(game.at(12,7))
+		caballero.position(game.at(12,7))
+		assert.notThat(game.hasVisual(personaje))
+	}
+	
 }
-*/
