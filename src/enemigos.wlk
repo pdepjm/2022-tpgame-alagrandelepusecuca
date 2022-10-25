@@ -8,9 +8,11 @@ object caballero{
 	
 	method interactuar(){
 		if (personaje.objetoEnMano() == espada){
-			game.removeVisual(self)
+			image = "enemigos/caballeroIzqMuerto.png"
 			espada.tirarObjeto()
-			game.addVisual(escudo)
+			position = position.left(1)
+			game.schedule(500,{game.removeVisual(self)})
+			game.schedule(500,{game.addVisual(escudo)})
 		}
 		else
 			personaje.muere()
