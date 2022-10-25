@@ -19,13 +19,21 @@
 El juego consiste en las aventuras de Jerry, superando obstaculos, enemigos y niveles. Jerry comenzara el juego con 3 vidas y cada vez que pierda se le descontara una e iniciando nuevamente desde el ultimo checkpoint.
 
 <-  -- Mueve a jerry a la izquierda
+
 ->  -- Mueve a jerry a la derecha
+
 ctrl -- Permite a jerry agacharse
+
 espacio -- Permite utilizar el elemento que posea en mano jerry
+
 num1 -- Permite asignar o desasignar el elemento del inventario en la posicion 1
+
 num2 -- Permite asignar o desasignar el elemento del inventario en la posicion 2
+
 num3 -- Permite asignar o desasignar el elemento del inventario en la posicion 3
+
 num4 -- Permite asignar o desasignar el elemento del inventario en la posicion 4
+
 num5 -- Permite asignar o desasignar el elemento del inventario en la posicion 5 
 
 
