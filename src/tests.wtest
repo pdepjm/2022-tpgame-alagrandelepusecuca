@@ -22,6 +22,7 @@ describe "Todos los tests"{
 		caja.tocarBoton()
 		assert.that(game.hasVisual(escaleraAbajo))
 	}
+	/*
 	test "Cuando el personaje toca la bandera, termina el juego"{
 		game.addVisual(banderaFinal)
 		personaje.position(banderaFinal.position())
@@ -29,6 +30,7 @@ describe "Todos los tests"{
 			banderaFinal.interactuar()
 		assert.that(game.hasVisual(ganaste))
 	}
+	*/
 	test "Al tocar el pinche, el personaje muere" {
 		nivel1.nuevoPinche(game.at(16,7))
 		personaje.position(game.at(16,7))
@@ -46,6 +48,7 @@ describe "Todos los tests"{
 		personaje.position(game.at(20,4))
 		assert.notThat(game.hasVisual(personaje))
 	}
+	/*
 	test "cuando el personaje equipado con la espada toca al caballero, lo mata" {
 		game.addVisual(personaje)
 		personaje.position(game.at(12,7))
@@ -53,6 +56,7 @@ describe "Todos los tests"{
 		caballero.position(game.at(12,7))
 		assert.notThat(game.hasVisual(caballero))
 	}
+	*/
 	test "cuando el personaje sin equipar toca al caballero, muere" {
 		game.addVisual(personaje)
 		personaje.position(game.at(12,7))
