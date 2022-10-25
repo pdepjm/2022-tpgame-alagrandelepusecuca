@@ -24,15 +24,6 @@ object caja inherits Objeto(position =game.at(2,1),image = "nivel0/cajaMadera.jp
 		position = position.left(1)
 	}
 	
-	method rebotarContra(){
-		game.onCollideDo(self,{chocado => chocado.rebotar()})
-	}
-	
-	method muere(){
-		game.clear()
-		game.addVisual(fin)
-	}
-	
 	override method interactuar(){
 		self.moverDerecha()
 	} 	
@@ -145,7 +136,8 @@ object varita inherits ObjetoUsable(position = game.at(0,10),image = "objetos/va
 		
 		fueguito.moverse(direccion)
 		game.onTick(750,"Disparo Fuego",{fueguito.moverse(direccion)})
-		game.onCollideDo(mago,{chocado => mago.quemarse(chocado)})
+		if (game.hasVisual(mago))
+			game.onCollideDo(mago,{chocado => mago.quemarse(chocado)})
 	}
 }
 

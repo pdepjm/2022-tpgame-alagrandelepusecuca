@@ -9,7 +9,6 @@ object juego{
 	var property nivelActual = nivel0
 
 	method iniciar(){
-		self.configurarJuego()
 		self.agregarInventario()
 		self.configurarPersonaje()
 		self.interaccionesGenerales()
@@ -25,12 +24,6 @@ object juego{
 		game.onCollideDo(personaje,{chocado => chocado.interactuar()})
 	}
 
-	method configurarJuego(){
-		game.title("Las aventuras de Jerry")
-		game.width(25)
-		game.height(15)
-	}
-	
 	method configurarPersonaje(){
 		game.addVisual(personaje)
 		

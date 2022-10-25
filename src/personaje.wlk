@@ -13,7 +13,7 @@ const pos4 = new Slot(position = game.at(13,14))
 const pos5 = new Slot(position = game.at(14,14))
 
 object personaje {
-	var property posicionReaparicion = game.at(0,4)
+	var property posicionReaparicion = game.at(0,1)
 	var property position = posicionReaparicion
 	var property anterior
 	var property image = "movimiento/jerryDer.png"
@@ -24,11 +24,7 @@ object personaje {
 
 	const property inventario = [pos1,pos2,pos3,pos4,pos5]
 	var property objetoEnMano = vacio
-	
-	method tocarBoton(){
-		game.say(self, "Usar Caja")
-	}
-	
+		
 	 	
  	// Inventario
  	method objetoEnPos(n) = inventario.get(n).objetoGuardado()
