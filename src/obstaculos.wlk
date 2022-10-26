@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import interactuables.*
+import extras.*
 
 class Bloque inherits Objeto{
 }
@@ -20,7 +21,11 @@ class Fuego inherits Objeto{
 	}
 
 	override method interactuar(){
-		personaje.muere()
+		personaje.muere(self)
+	}
+	
+	method morirSegunEnemigo() {
+		game.addVisual(finalFuego)
 	}
 }
  
@@ -39,7 +44,7 @@ class Pinche inherits Objeto(image = "pinches/pincheBajo.png"){
 	}
 	
 	override method interactuar(){
-		personaje.muere()
+		personaje.muere(self)
 	}
 	
 	method estaArriba() = image == "pinches/pincheAlto.png"
@@ -48,10 +53,14 @@ class Pinche inherits Objeto(image = "pinches/pincheBajo.png"){
 		game.schedule(350,{image ="pinches/pincheMedio.png"})
 		game.schedule(700,{image ="pinches/pincheBajo.png"})
 		game.schedule(1000,{game.removeVisual(self)})
-
 	}
+	
 	method subirPinche(){
 		game.schedule(350,{image ="pinches/pincheMedio.png"})
 		game.schedule(700,{image ="pinches/pincheAlto.png"})
+	}
+	
+	method morirSegunEnemigo() {
+		game.addVisual(finalPinchos)
 	}
 }

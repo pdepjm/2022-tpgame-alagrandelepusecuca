@@ -56,12 +56,12 @@ describe "Todos los tests"{
 		caballero.position(game.at(12,7))
 		assert.notThat(game.hasVisual(caballero))
 	}
-	*/
+	
 	test "cuando el personaje sin equipar toca al caballero, muere" {
 		game.addVisual(personaje)
 		personaje.position(game.at(12,7))
 		caballero.position(game.at(12,7))
 		assert.notThat(game.hasVisual(personaje))
 	}
-	
+	*/
 }

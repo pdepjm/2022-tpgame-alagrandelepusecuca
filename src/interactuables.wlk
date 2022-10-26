@@ -69,7 +69,7 @@ const escaleraAbajo = new Escalera(position = game.at(4,1),image = "escaleras/es
 
 object banderaFinal inherits Objeto(position = game.at(24,10), image = "banderas/banderaFin.png"){
 	override method interactuar(){
-		personaje.ganaste()
+		personaje.ganar()
 	}
 }
 

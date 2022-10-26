@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import interactuables.*
+import extras.*
 
 object caballero{
 	var property position = game.at(12,7)
@@ -15,7 +16,11 @@ object caballero{
 			game.schedule(500,{game.addVisual(escudo)})
 		}
 		else
-			personaje.muere()
+			personaje.muere(self)
+	}
+	
+	method morirSegunEnemigo() {
+		game.addVisual(finalCaballero)
 	}
 }
 
@@ -41,9 +46,13 @@ class Flecha{
 
 	method interactuar(){
 		if(personaje.objetoEnMano() != agachado){
-			personaje.muere()
+			personaje.muere(self)
 		}
-	} 
+	}
+	
+	method morirSegunEnemigo() {
+		game.addVisual(finalFlecha)
+	}
 	
 }
 
@@ -62,7 +71,7 @@ object mago{
 		}
 	}
 	method interactuar(){
-		personaje.muere()
+		personaje.muere(self)
 	}
 
 	method quemarse(objeto){
@@ -79,10 +88,15 @@ class FuegoMago{
 	method moverse(){
 		position = position.left(1)
 	}
+	
 	method interactuar(){
 		if (personaje.objetoEnMano() == escudo and personaje.direccion() == derecha)
 			game.removeVisual(self)
 		else
-			personaje.muere()
+			personaje.muere(self)
+	}
+	
+	method morirSegunEnemigo() {
+		game.addVisual(finalMago)
 	}
 }

@@ -88,17 +88,17 @@ object personaje {
 		game.onTick(1000,"DisparoFuego",{fueguito.moverse()})
 	}
 
-	method ganaste(){
+	method ganar(){
  		game.clear()
 		game.schedule(350,{game.addVisual(ganaste)})
  	}
 		
 	
 	// Vidas:
-	method muere(){
+	method muere(enemigo){
 		if(self.vidasRestantes() == 1){
 			game.clear()
-			game.schedule(350,{game.addVisual(fin)})
+			game.schedule(350,{enemigo.morirSegunEnemigo()})
 		}
 		else
 			self.restarVida()
