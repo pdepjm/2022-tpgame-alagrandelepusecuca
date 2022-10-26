@@ -13,6 +13,9 @@ object inicioManager {
 			juego.iniciar()
 		}
 		keyboard.c().onPressDo({game.addVisual(controles)})
+		
+		
+		
 	}
 }
 
@@ -21,6 +24,6 @@ object pantallaInicio {
 	const property position = game.origin()
 }	
 object controles {
-	const property controles = "controles.png"
-	const property position = game.at(19,10)
+	const property image = "controles.png"
+	const property position = game.at(17,2)
 }
