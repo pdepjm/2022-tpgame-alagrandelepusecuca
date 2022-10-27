@@ -9,7 +9,7 @@
 
 ## Capturas
 
-![image](https://user-images.githubusercontent.com/102746862/197822775-732cd85f-ee0b-45cb-9f2c-cf6a0723098e.png)
+![image](https://user-images.githubusercontent.com/83732289/198284771-efe7e7f2-ae54-443b-8f1e-82b59c4e3c81.png)
 ![image](https://user-images.githubusercontent.com/102746862/197822826-c8631f88-7729-416f-aa8a-f873d838fb5f.png)
 ![image](https://user-images.githubusercontent.com/102746862/197822868-b77fc956-d5b8-4c7c-bb4b-a6ab4f1c3ddc.png)
 ![image](https://user-images.githubusercontent.com/102746862/197822894-313654e7-a405-41e4-8dc3-5b02cf13502f.png)
