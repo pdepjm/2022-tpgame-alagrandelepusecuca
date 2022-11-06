@@ -40,6 +40,7 @@ num5 -- Permite asignar o desasignar el elemento del inventario en la posicion 5
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Curso:K2004
+- Facultad:UTNFRBA
+- Versión de wollok 3.0.0
+- Una vez terminado, no tenemos problemas en que el repositorio sea público
